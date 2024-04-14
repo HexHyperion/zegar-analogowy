@@ -1,0 +1,22 @@
+@font-face {
+    font-family: "Brandon Grotesque";
+    src: url(../font/brandon-grotesque-thin.ttf);
+}
+
+@font-face {
+    font-family: "Brandon";
+    src: url(../font/brandon-text.otf);
+}
+@font-face {
+    font-family: "Brandon Italic";
+    src: url(../font/brandon-text-italic.otf);
+}
+@font-face {
+    font-family: "Brandon Bold";
+    src: url(../font/brandon-text-bold.otf);
+}
+
+@font-face {
+    font-family: "Ubuntu Mono";
+    src: url(../font/ubuntu-mono.ttf);
+}

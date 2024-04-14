@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Szymon Urbaniak">
+        <script src="js/script.js" defer></script>
+        <script src="js/clock-script.js" defer></script>
+        <title>Jak stworzyć zegar? | Zegar analogowy</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/preview-style-0.css" id="temp-style">
+    </head>
+    <body onkeydown="pageControl(event);">
+        <div id="text-wrapper">
+            <h1>Jak stworzyć zegar?</h1>
+            <p>Korzystając z wcześniej przedstawionych funkcji obiektu typu Date i poznanych na lekcji o animacjach przekształceń w CSS możemy stworzyć wizualną reprezentację tych danych w postaci analogowego zegara. Niniejsza strona prezentuje ten proces krok po kroku.</p>
+        </div>
+        <div id="wrapper">
+            <div id="preview">
+                <div class="clock">
+                    <div class="face">
+                        <div class="name">SMAGUO</div>
+                        <div class="small-name">since 2007</div>
+                        <div class="very-small-name">(older than monke)</div>
+                        <div class="hrs-hand" id="hrs-hand"></div>
+                        <div class="mins-hand" id="mins-hand"></div>
+                        <div class="secs-hand" id="secs-hand"></div>
+                        <div class="dot"><div class="secs-dot"></div></div>
+                        <div class="screw-dot"></div>
+                        <div class="lines" id="lines"></div>
+                        <div class="numbers" id="numbers">
+                            <!-- <span class="number number3">3</span>
+                            <span class="number number6">6</span>
+                            <span class="number number9">9</span>
+                            <span class="number number12">12</span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="code">
+                <pre class="prettyprint lang-html">
+&lt;div class="clock"&gt;
+    &lt;div class="face"&gt;
+        &lt;div class="name"&gt;SMAGUO&lt;/div&gt;
+        &lt;div class="small-name"&gt;since 2007&lt;/div&gt;
+        &lt;div class="very-small-name"&gt;(older than monke)&lt;/div&gt;
+        
+        &lt;div class="hrs-hand" id="hrs-hand"&gt;&lt;/div&gt;
+        &lt;div class="mins-hand" id="mins-hand"&gt;&lt;/div&gt;
+        &lt;div class="secs-hand" id="secs-hand"&gt;&lt;/div&gt;
+
+        &lt;div class="dot"&gt;
+            &lt;div class="secs-dot"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="screw-dot"&gt;&lt;/div&gt;
+
+        &lt;div class="lines" id="lines"&gt;&lt;/div&gt;
+        &lt;div class="numbers" id="numbers"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+                <pre class="prettyprint lang-css">
+.clock {
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+    box-shadow: 5px 5px 50px rgba(0, 0, 0, 0.8);
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid #e5ba8d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000f20;
+    background: radial-gradient(circle, rgb(0, 8, 16) 0%, rgb(0, 24, 51) 100%);
+    box-shadow: inset -5px -5px 50px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+.name {
+    position: absolute;
+    top: 135px;
+    font-size: 25px;
+}
+
+.small-name {
+    position: absolute;
+    top: 165px;
+    font-size: 12px;
+}
+
+.very-small-name {
+    position: absolute;
+    top: 183px;
+    font-size: 6px;
+}
+</pre>
+
+                <pre class="prettyprint lang-css">
+.hrs-hand, .mins-hand {
+    background-color: white;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    position: absolute;
+    transform-origin: bottom center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.hrs-hand {
+    height: 110px;
+    width: 10px;
+    border: 3px solid #e5ba8d;
+    border-bottom: 30px solid #e5ba8d;
+    top: 135px;
+    z-index: 3;
+    
+}
+
+.mins-hand {
+    height: 180px;
+    width: 8px;
+    border: 2px solid #e5ba8d;
+    border-bottom: 30px solid #e5ba8d;
+    top: 65px;
+    z-index: 4;
+}
+</pre>
+
+                <pre class="prettyprint lang-css">
+.secs-hand {
+    height: 240px;
+    width: 4px;
+    background-color: #60efe6;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    position: absolute;
+    top: 45px;
+    transform-origin: center 200px;
+    z-index: 6;
+    display: flex;
+    justify-content: center;
+}
+
+.secs-hand::before, .secs-hand::after {
+    content: "";
+    display: block;
+    position: absolute;
+    clip-path: polygon(50% 0%, 100% 80%, 50% 100%, 0 80%);
+}
+
+.secs-hand::before {
+    height: 22px;
+    width: 13px;
+    top: 30px;
+    background-color: #60efe6;
+}
+
+.secs-hand::after {
+    height: 13px;
+    width: 7px;
+    top: 36px;
+    background-color: white;
+}
+</pre>
+
+                <pre class="prettyprint lang-css">
+.dot, .secs-dot, .screw-dot {
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot {
+    background-color: #e5ba8d;
+    width: 20px;
+    height: 20px;
+    z-index: 5;
+}
+
+.secs-dot {
+    background-color: #60efe6;
+    width: 12px;
+    height: 12px;
+}
+
+.screw-dot {
+    background-color: #e5ba8d;
+    width: 6px;
+    height: 6px;
+    z-index: 9;
+}
+</pre>
+
+                <pre class="prettyprint lang-js">
+let lines = document.getElementById("lines");
+let numbers = document.getElementById("numbers");
+
+for (let i = 0; i &lt; 60; i++) {
+    if (i % 5 == 0){
+        lines.innerHTML += 
+            `&lt;div class="line big-line" 
+            style="transform: rotate(${6*i}deg) translateY(228px);"&gt;
+            &lt;/div&gt;`;
+    }
+    else { 
+        lines.innerHTML += 
+            `&lt;div class="line" 
+            style="transform: rotate(${6*i}deg) translateY(230px);"&gt;
+            &lt;/div&gt;`;
+    }
+}
+
+for (let i = 1; i &lt; 13; i++) {
+    numbers.innerHTML += 
+        `&lt;div class="number" 
+        style="transform: rotate(${30*i}deg) translateY(-180px);"&gt;
+            &lt;div style="transform: rotate(-${30*i}deg);"&gt;${i}&lt;/div&gt;
+        &lt;/div&gt;`;
+}
+</pre>
+
+                <pre class="prettyprint lang-css">
+.lines {
+    height: 10px;
+    width: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.line {
+    background-color: #848b91;
+    height: 10px;
+    width: 2px;
+    position: absolute;
+}
+
+.big-line {
+    background-color: white;
+    width: 8px;
+    height: 18px;
+    border: 2px solid #e5ba8d;
+}
+
+.numbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.number {
+    position: absolute;
+    font-size: 40px;
+    width: 35px;
+    height: 50px;
+    text-align: center;
+    z-index: 1;
+}
+
+.number:nth-child(3n) {
+    font-size: 55px;
+    width: 50px;
+}
+
+.number:nth-child(n+1):nth-child(-n+5) {
+    text-align: right;
+}
+
+.number:nth-child(n+7):nth-child(-n+11) {
+    text-align: left;
+}
+</pre>
+
+                <pre class="prettyprint lang-js">
+let hrsHand = document.getElementById("hrs-hand");
+let minsHand = document.getElementById("mins-hand");
+let secsHand = document.getElementById("secs-hand");
+
+function setDate() {
+    const now = new Date();
+    const hrs = now.getHours();
+    const mins = now.getMinutes();
+    const secs = now.getSeconds();
+    
+    const hrsDeg = hrs * 30 + mins * 0.5;
+    const minsDeg = mins * 6 + secs * 0.1;
+    const secsDeg = secs * 6;
+
+    hrsHand.style.transform = `rotate(${hrsDeg}deg)`;
+    minsHand.style.transform = `rotate(${minsDeg}deg)`;
+    secsHand.style.transform = `rotate(${secsDeg}deg)`;
+}
+
+setInterval(setDate, 100);
+</pre>
+            </div>
+            <div id="steps">
+                <label>Struktura HTML<input type="radio" name="steps" value="1" checked></label>
+                <label>Style tarczy<input type="radio" name="steps" value="2"></label>
+                <label>Wskazówki godziny<input type="radio" name="steps" value="3"></label>
+                <label>Sekundnik<input type="radio" name="steps" value="4"></label>
+                <label>Środek zegara<input type="radio" name="steps" value="5"></label>
+                <label>Oznaczenia godzin<input type="radio" name="steps" value="6"></label>
+                <label>Style oznaczeń<input type="radio" name="steps" value="7"></label>
+                <label>Funkcjonalność<input type="radio" name="steps" value="8"></label>
+            </div>
+        </div>
+        
+        <div class="background-wrapper"></div>
+
+        <script src="js/preview-script-0.js" id="temp-script"></script>
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    </body>
+</html>

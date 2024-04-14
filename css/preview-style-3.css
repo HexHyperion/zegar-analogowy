@@ -1,0 +1,104 @@
+.clock {
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+    box-shadow: 5px 5px 50px rgba(0, 0, 0, 0.8);
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid #e5ba8d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000f20;
+    background: radial-gradient(circle, rgb(0, 8, 16) 0%, rgb(0, 13, 28) 40%, rgb(0, 24, 51) 100%);
+    box-shadow: inset -5px -5px 50px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+.name {
+    position: absolute;
+    top: 135px;
+    font-size: 25px;
+}
+
+.small-name {
+    position: absolute;
+    top: 165px;
+    font-size: 12px;
+}
+
+.very-small-name {
+    position: absolute;
+    top: 183px;
+    font-size: 6px;
+}
+
+.hrs-hand {
+    height: 110px;
+    width: 10px;
+    background-color: white;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border: 3px solid #e5ba8d;
+    border-bottom: 30px solid #e5ba8d;
+    position: absolute;
+    top: 135px;
+    transform-origin: bottom center;
+    z-index: 3;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.mins-hand {
+    height: 180px;
+    width: 8px;
+    background-color: white;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border: 2px solid #e5ba8d;
+    border-bottom: 30px solid #e5ba8d;
+    position: absolute;
+    top: 65px;
+    transform-origin: bottom center;
+    z-index: 4;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.secs-hand {
+    height: 240px;
+    width: 4px;
+    background-color: #60efe6;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    position: absolute;
+    top: 45px;
+    transform-origin: center 200px;
+    z-index: 6;
+    display: flex;
+    justify-content: center;
+}
+
+.secs-hand::before{
+    content: "";
+    display: block;
+    height: 22px;
+    width: 13px;
+    position: absolute;
+    top: 30px;
+    clip-path: polygon(50% 0%, 100% 80%, 50% 100%, 0 80%);
+    background-color: #60efe6;
+}
+
+.secs-hand::after{
+    content: "";
+    display: block;
+    height: 13px;
+    width: 7px;
+    position: absolute;
+    top: 36px;
+    clip-path: polygon(50% 0%, 100% 80%, 50% 100%, 0 80%);
+    background-color: white;
+}

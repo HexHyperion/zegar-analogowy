@@ -1,0 +1,131 @@
+@import url(meyer.css);
+@import url(code-theme.css);
+@import url(fonts.css);
+
+* {
+    box-sizing: border-box;
+    color: #bbc8d1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Brandon Grotesque", sans-serif;
+    color: #e5ba8d
+}
+
+body {    
+    background: url(../img/wp2991133.png);
+    background-size: contain;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    font-family: "Brandon", sans-serif;
+}
+
+#preview, pre {
+    background-color: rgba(0, 9, 20, 0.7);
+    border-radius: 20px;
+    border: 3px solid #e5ba8d1b !important;
+    height: 700px;
+}
+
+#text-wrapper {
+    width: 80%;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+#text-wrapper h1 {
+    font-size: 4.5rem;
+    margin-bottom: 30px;
+    margin-top:25px;
+}
+
+.background-wrapper {
+    position: fixed;
+    z-index: -1;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 13, 29, 0.8);
+}
+
+#wrapper {
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+#preview {
+    flex-basis: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 50px;
+}
+
+#code {
+    flex-basis: 55%;
+    height: fit-content;
+}
+
+#steps {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+pre {
+    white-space: pre-wrap;
+    font-family: "Ubuntu Mono", 'Courier New', Courier, monospace;
+    padding: 20px !important;
+    line-height: 1.5;
+    overflow-y: auto;
+}
+
+#steps label {
+    height: 50px;
+    width: 165px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000914;
+    border-radius: 20px;
+}
+
+#steps label input[type="radio"] {
+    display: none;
+}
+
+#steps label:has(input:checked) {
+    border: 1px solid #60efe6;
+    color: #60efe6;
+}
+
+#code > :not(:first-child) {
+    display: none;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    #wrapper {
+        flex-direction: column;
+    }
+    #steps {
+        height: fit-content;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

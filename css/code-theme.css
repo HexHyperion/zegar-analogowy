@@ -1,0 +1,24 @@
+/* Pretty printing styles. Used with prettify.js. */
+
+/* todo - GRADIENTOWY TEKST - można wsadzić zamiast kolorów
+background: linear-gradient(to right, #cośtam 0%, #drugiecośtam 100%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+*/
+
+pre .str, code .str { color: #999999; } /* string */
+pre .kwd, code .kwd { color: #749ecf; } /* keyword */
+pre .com, code .com { color: #3EE9DE; } /* comment */
+pre .typ, code .typ { color: #89bdff; } /* type */
+pre .lit, code .lit { color: #60f4ea; } /* literal */
+pre .pun, code .pun { color: #aeaeae; } /* punctuation */
+pre .pln, code .pln { color: #bbc8d1; } /* plaintext */
+pre .tag, code .tag { color: #89bdff; } /* html/xml tag */
+pre .atn, code .atn { color: #e5ba8d; } /* html/xml attribute name */
+pre .atv, code .atv { color: #999999; } /* html/xml attribute value */
+pre .dec, code .dec { color: #3EE9DE; } /* decimal */
+
+pre.prettyprint {
+	white-space: pre-wrap;
+}
