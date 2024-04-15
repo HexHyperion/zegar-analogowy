@@ -1,3 +1,8 @@
+// 2, 4, 7 overflow
+// na pilocie PageDown dalej, PageUp wstecz, F5 lewy fn, . prawy fn
+// wyłączenie odświeżania na F5
+document.addEventListener("keydown", (e) => {if (e.key == "F5") e.preventDefault();});
+
 function pageControl(event){
     let key = event.key;
     if (key == "PageUp" || key == "ArrowLeft"){
@@ -35,5 +40,25 @@ function pageControl(event){
             document.querySelector(`#steps label:nth-child(${inputIndex+1}) input`).checked = true;
             swap();
         }
+    }
+    else if (key == "F5"){
+        let elemIndex
+        if (document.querySelector("#steps label:nth-child(2) input").checked) elemIndex = 2;
+        else if (document.querySelector("#steps label:nth-child(4) input").checked) elemIndex = 4;
+        else if (document.querySelector("#steps label:nth-child(7) input").checked) elemIndex = 7;
+        document.querySelector(`#code pre:nth-child(${elemIndex})`).scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
+    else if (key == "."){
+        let elemIndex
+        if (document.querySelector("#steps label:nth-child(2) input").checked) elemIndex = 2;
+        else if (document.querySelector("#steps label:nth-child(4) input").checked) elemIndex = 4;
+        else if (document.querySelector("#steps label:nth-child(7) input").checked) elemIndex = 7;
+        document.querySelector(`#code pre:nth-child(${elemIndex})`).scrollTo({
+            top: document.querySelector(`#code pre:nth-child(${elemIndex})`).scrollHeight,
+            behavior: "smooth"
+        })
     }
 }
