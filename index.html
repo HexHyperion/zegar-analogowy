@@ -6,11 +6,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Szymon Urbaniak">
         <script src="js/script.js" defer></script>
-        <title>Zegar analogowy</title>
+        <script src="js/preview-script-0.js" defer></script>
+        <script src="js/preview-script-2.js" defer></script>
+        <title>Hejka :3 | Zegar analogowy</title>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/preview-style-5.css">
     </head>
-    <body>
+    <body onkeydown="pageIndexControl(event);">
+        <div id="text-wrapper">
+            <h1>Hejka :3</h1>
+            <p>Na dzisiejszych zajęciach dowiecie się, jak stworzyć zegar analogowy korzystając z HTMLa, CSSa, i JajaSkryptu. Jest to wiedza niezbędna Wam do życia, bez której na pewno nie poradzicie sobie na rynku pracy. Słuchajcie uważnie i czytajcie między wierszami, a wyniesiecie z naszej lekcji wiedzę pozapodręcznikową i nie tylko.</p>
+            <p>Miłej zabawy! I pamiętajcie - choć jest bezpiecznie, to czas działa na Waszą niekorzyść :3</p>
+        </div>
 
+        <div id="clock-wrapper">
+            <div class="clock" onclick="window.location.replace('date.html');" style="cursor: pointer;">
+                <div class="face">
+                    <div class="name">SMAGUO</div>
+                    <div class="small-name">since 2007</div>
+                    <div class="very-small-name">(older than monke)</div>
+                    
+                    <div class="hrs-hand" id="hrs-hand"></div>
+                    <div class="mins-hand" id="mins-hand"></div>
+                    <div class="secs-hand" id="secs-hand"></div>
+            
+                    <div class="dot">
+                        <div class="secs-dot"></div>
+                    </div>
+                    <div class="screw-dot"></div>
+            
+                    <div class="lines" id="lines"></div>
+                    <div class="numbers" id="numbers"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="background-wrapper"></div>
+
+        <script>
+            function pageIndexControl(event) {
+                let key = event.key;
+                if (key == "PageDown" || key == "ArrowRight"){
+                    window.location.replace("date.html");
+                }
+            }
+        </script>
         <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     </body>
 </html>
