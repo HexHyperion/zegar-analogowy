@@ -19,8 +19,8 @@
             <p>Miłej zabawy! I pamiętajcie - choć jest bezpiecznie, to czas działa na Waszą niekorzyść :3</p>
         </div>
 
-        <div id="clock-wrapper">
-            <div class="clock" onclick="window.location.replace('date.html');" style="cursor: pointer;">
+        <div id="clock-wrapper" onclick="animateThings();">
+            <div class="clock" style="cursor: pointer;">
                 <div class="face">
                     <div class="name">SMAGUO</div>
                     <div class="small-name">since 2007</div>
@@ -42,12 +42,13 @@
         </div>
 
         <div class="background-wrapper"></div>
+        <div id="flash-wrapper"></div>
 
         <script>
             function pageIndexControl(event) {
                 let key = event.key;
                 if (key == "PageDown" || key == "ArrowRight"){
-                    window.location.replace("date.html");
+                    animateThings();
                 }
             }
         </script>

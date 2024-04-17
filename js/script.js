@@ -79,3 +79,11 @@ function swap(){
         changeScript("js/preview-script-2.js");
     }
 }
+
+function animateThings() {
+    document.getElementById("clock-wrapper").style.animation = "szpin 10s cubic-bezier(1,0.01,1,1)";
+    document.getElementById("flash-wrapper").style.animation = "flasz 10s cubic-bezier(1,0.06,1,1)";
+    setTimeout(() => {
+        document.location.href = "date.html";
+    }, 9500)
+}

@@ -7,7 +7,7 @@ function pageControl(event){
     let key = event.key;
     if (key == "PageUp" || key == "ArrowLeft"){
         if (document.querySelector("#steps label:nth-child(1) input").checked) {
-            window.location.replace("../date.html");
+            window.location.href = "../date.html";
         }
         else {
             let inputs = document.querySelectorAll("#steps label input");
@@ -25,7 +25,7 @@ function pageControl(event){
     }
     else if (key == "PageDown" || key == "ArrowRight"){
         if (document.querySelector("#steps label:last-child input").checked) {
-            window.location.replace("../bye.html");
+            window.location.href = "../bye.html";
         }
         else {
             let inputs = document.querySelectorAll("#steps label input");
